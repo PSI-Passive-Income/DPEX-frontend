@@ -17,6 +17,8 @@ import {
   getMasterChefAddress,
   getPointCenterIfoAddress,
   getClaimRefundAddress,
+  getTradingCompetitionAddress,
+  getEasterNftAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -27,7 +29,8 @@ import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
 import bep20Abi from 'config/abi/erc20.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import cakeAbi from 'config/abi/cake.json'
-import ifoAbi from 'config/abi/ifo.json'
+import ifoV1Abi from 'config/abi/ifoV1.json'
+import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
 import lotteryAbi from 'config/abi/lottery.json'
 import lotteryTicketAbi from 'config/abi/lotteryNft.json'
@@ -35,6 +38,8 @@ import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
 import sousChefBnb from 'config/abi/sousChefBnb.json'
 import claimRefundAbi from 'config/abi/claimRefund.json'
+import tradingCompetitionAbi from 'config/abi/tradingCompetition.json'
+import easterNftAbi from 'config/abi/easterNft.json'
 
 const getContract = (abi: any, address: string, web3?: Web3) => {
   const _web3 = web3 ?? web3NoAccount
@@ -47,8 +52,11 @@ export const getBep20Contract = (address: string, web3?: Web3) => {
 export const getLpContract = (address: string, web3?: Web3) => {
   return getContract(lpTokenAbi, address, web3)
 }
-export const getIfoContract = (address: string, web3?: Web3) => {
-  return getContract(ifoAbi, address, web3)
+export const getIfoV1Contract = (address: string, web3?: Web3) => {
+  return getContract(ifoV1Abi, address, web3)
+}
+export const getIfoV2Contract = (address: string, web3?: Web3) => {
+  return getContract(ifoV2Abi, address, web3)
 }
 export const getSouschefContract = (id: number, web3?: Web3) => {
   const config = poolsConfig.find((pool) => pool.sousId === id)
@@ -84,4 +92,10 @@ export const getMasterchefContract = (web3?: Web3) => {
 }
 export const getClaimRefundContract = (web3?: Web3) => {
   return getContract(claimRefundAbi, getClaimRefundAddress(), web3)
+}
+export const getTradingCompetitionContract = (web3?: Web3) => {
+  return getContract(tradingCompetitionAbi, getTradingCompetitionAddress(), web3)
+}
+export const getEasterNftContract = (web3?: Web3) => {
+  return getContract(easterNftAbi, getEasterNftAddress(), web3)
 }

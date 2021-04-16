@@ -4,7 +4,6 @@ import useI18n from 'hooks/useI18n'
 import { LinkExternal, Text } from '@pancakeswap-libs/uikit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { communityFarms } from 'config/constants'
 import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
 
 import HarvestAction from './HarvestAction'
@@ -104,6 +103,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
   const farm = details
 
   const TranslateString = useI18n()
+  const isActive = farm.multiplier !== '0X'
   const { quoteToken, token, dual } = farm
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
@@ -113,20 +113,21 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const bsc = `https://bscscan.com/address/${lpAddress}`
   const info = `https://pancakeswap.info/pair/${lpAddress}`
-  const isCommunityFarm = communityFarms.includes(token.symbol)
 
   return (
     <Container>
       <InfoContainer>
-        <StakeContainer>
-          <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
-            {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
-          </StyledLinkExternal>
-        </StakeContainer>
+        {isActive && (
+          <StakeContainer>
+            <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
+              {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
+            </StyledLinkExternal>
+          </StakeContainer>
+        )}
         <StyledLinkExternal href={bsc}>{TranslateString(999, 'View Contract')}</StyledLinkExternal>
         <StyledLinkExternal href={info}>{TranslateString(999, 'See Pair Info')}</StyledLinkExternal>
         <TagsContainer>
-          {isCommunityFarm ? <CommunityTag /> : <CoreTag />}
+          {farm.isCommunity ? <CommunityTag /> : <CoreTag />}
           {dual ? <DualTag /> : null}
         </TagsContainer>
       </InfoContainer>

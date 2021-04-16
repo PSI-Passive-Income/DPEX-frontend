@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from 'state'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { Image, Heading, RowType, Toggle, Text } from '@pancakeswap-libs/uikit'
@@ -13,9 +13,10 @@ import { fetchFarmUserDataAsync } from 'state/actions'
 import { Farm } from 'state/types'
 import useI18n from 'hooks/useI18n'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { getFarmApy } from 'utils/apy'
+import { getFarmApr } from 'utils/apr'
 import { orderBy } from 'lodash'
 
+import { getAddress } from 'utils/addressHelpers'
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import Table from './components/FarmTable/FarmTable'
 import FarmTabButtons from './components/FarmTabButtons'
@@ -121,7 +122,7 @@ const Farms: React.FC = () => {
   const [sortOption, setSortOption] = useState('hot')
   const prices = useGetApiPrices()
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()
   useEffect(() => {
     if (account) {
@@ -146,7 +147,7 @@ const Farms: React.FC = () => {
   const sortFarms = (farms: FarmWithStakedValue[]): FarmWithStakedValue[] => {
     switch (sortOption) {
       case 'apr':
-        return orderBy(farms, (farm: FarmWithStakedValue) => farm.apy, 'desc')
+        return orderBy(farms, (farm: FarmWithStakedValue) => farm.apr, 'desc')
       case 'multiplier':
         return orderBy(
           farms,
@@ -164,25 +165,25 @@ const Farms: React.FC = () => {
 
   const farmsList = useCallback(
     (farmsToDisplay: Farm[]): FarmWithStakedValue[] => {
-      let farmsToDisplayWithAPY: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+      let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
         if (!farm.lpTotalInQuoteToken || !prices) {
           return farm
         }
 
-        const quoteTokenPriceUsd = prices[farm.quoteToken.symbol.toLowerCase()]
+        const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
-        const apy = isActive ? getFarmApy(farm.poolWeight, cakePrice, totalLiquidity) : 0
+        const apr = isActive ? getFarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
 
-        return { ...farm, apy, liquidity: totalLiquidity }
+        return { ...farm, apr, liquidity: totalLiquidity }
       })
 
       if (query) {
         const lowercaseQuery = query.toLowerCase()
-        farmsToDisplayWithAPY = farmsToDisplayWithAPY.filter((farm: FarmWithStakedValue) => {
+        farmsToDisplayWithAPR = farmsToDisplayWithAPR.filter((farm: FarmWithStakedValue) => {
           return farm.lpSymbol.toLowerCase().includes(lowercaseQuery)
         })
       }
-      return farmsToDisplayWithAPY
+      return farmsToDisplayWithAPR
     },
     [cakePrice, prices, query, isActive],
   )
@@ -208,13 +209,13 @@ const Farms: React.FC = () => {
 
     const row: RowProps = {
       apr: {
-        value: farm.apy && farm.apy.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+        value: farm.apr && farm.apr.toLocaleString('en-US', { maximumFractionDigits: 2 }),
         multiplier: farm.multiplier,
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
         cakePrice,
-        originalValue: farm.apy,
+        originalValue: farm.apr,
       },
       farm: {
         image: farm.lpSymbol.split(' ')[0].toLocaleLowerCase(),
@@ -293,7 +294,7 @@ const Farms: React.FC = () => {
     <>
       <Header>
         <Heading as="h1" size="xxl" color="secondary" mb="24px">
-          {TranslateString(999, 'Farms')}
+          {TranslateString(674, 'Farms')}
         </Heading>
         <Heading size="lg" color="text">
           {TranslateString(999, 'Stake Liquidity Pool (LP) tokens to earn.')}

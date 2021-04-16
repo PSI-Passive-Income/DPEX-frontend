@@ -41,9 +41,17 @@ const config: MenuEntry[] = [
     href: '/collectibles',
   },
   {
+    label: 'Team Battle',
+    icon: 'TeamBattleIcon',
+    href: '/competition',
+    status: {
+      text: 'CLAIM',
+      color: 'warning',
+    },
+  },
+  {
     label: 'Teams & Profile',
     icon: 'GroupsIcon',
-    calloutClass: 'rainbow',
     items: [
       {
         label: 'Leaderboard',
@@ -91,6 +99,10 @@ const config: MenuEntry[] = [
     icon: 'MoreIcon',
     items: [
       {
+        label: 'Contact',
+        href: 'https://docs.pancakeswap.finance/contact-us',
+      },
+      {
         label: 'Voting',
         href: 'https://voting.pancakeswap.finance',
       },
@@ -105,6 +117,10 @@ const config: MenuEntry[] = [
       {
         label: 'Blog',
         href: 'https://pancakeswap.medium.com',
+      },
+      {
+        label: 'Merch',
+        href: 'https://pancakeswap.creator-spring.com/',
       },
     ],
   },

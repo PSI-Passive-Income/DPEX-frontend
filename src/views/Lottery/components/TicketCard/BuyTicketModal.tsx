@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Button, Modal } from '@pancakeswap-libs/uikit'
-import { getFullDisplayBalance } from 'utils/formatBalance'
+import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import TicketInput from 'components/TicketInput'
 import ModalActions from 'components/ModalActions'
 import { useMultiBuyLottery, useMaxNumber } from 'hooks/useBuyLottery'
@@ -22,14 +22,18 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
   const [, setRequestedBuy] = useState(false)
   const TranslateString = useI18n()
   const fullBalance = useMemo(() => {
-    return getFullDisplayBalance(max)
+    return getBalanceNumber(max)
   }, [max])
 
   const maxTickets = useMemo(() => {
     return parseInt(getFullDisplayBalance(max.div(LOTTERY_TICKET_PRICE)), 10)
   }, [max])
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value)
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.validity.valid) {
+      setVal(e.currentTarget.value)
+    }
+  }
 
   const { onMultiBuy } = useMultiBuyLottery()
   const maxNumber = useMaxNumber()
@@ -97,6 +101,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
           width="100%"
           disabled={
             pendingTx ||
+            !Number.isInteger(parseInt(val)) ||
             parseInt(val) > Number(maxTickets) ||
             parseInt(val) > LOTTERY_MAX_NUMBER_OF_TICKETS ||
             parseInt(val) < 1
