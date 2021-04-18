@@ -17,8 +17,8 @@ export const BSC_BLOCK_TIME = 3
 
 export const INCOME_PER_BLOCK = new BigNumber(8561643835616438)
 export const BLOCKS_PER_YEAR = new BigNumber((60 / BSC_BLOCK_TIME) * 60 * 24 * 365) // 10512000
-export const BASE_URL = 'https://pancakeswap.finance'
-export const BASE_EXCHANGE_URL = 'https://exchange.pancakeswap.finance'
+export const BASE_URL = `${process.env.REACT_APP_PSIDEX_URL}`
+export const BASE_EXCHANGE_URL = `${process.env.REACT_APP_PSIDEX_URL}`
 export const BASE_ADD_LIQUIDITY_URL = `${BASE_EXCHANGE_URL}/#/add`
 export const BASE_LIQUIDITY_POOL_URL = `${BASE_EXCHANGE_URL}/#/pool`
 export const LOTTERY_MAX_NUMBER_OF_TICKETS = 50

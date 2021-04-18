@@ -1,4 +1,19 @@
-import { MenuEntry } from '@passive-income/dpex-uikit'
+import { MenuEntry, LinkStatus } from '@passive-income/dpex-uikit'
+
+const status = {
+  LIVE: <LinkStatus>{
+    text: "LIVE",
+    color: "failure",
+  },
+  SOON: <LinkStatus>{
+    text: "SOON",
+    color: "warning",
+  },
+  NEW: <LinkStatus>{
+    text: "NEW",
+    color: "success",
+  },
+};
 
 const config: MenuEntry[] = [
   {
@@ -29,6 +44,7 @@ const config: MenuEntry[] = [
     icon: 'FarmIcon',
     href: '/farms',
     initialOpenState: true,
+    status: status.LIVE,
   },
   // {
   //   label: 'Pools',
