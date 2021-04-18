@@ -1,9 +1,9 @@
 import React from 'react'
-import { Text } from '@pancakeswap-libs/uikit'
+import { Text } from '@passive-income/dpex-uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalRewards } from 'hooks/useTickets'
 import useI18n from 'hooks/useI18n'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceIncomeBusd } from 'state/hooks'
 import { BigNumber } from 'bignumber.js'
 import CardBusdValue from './CardBusdValue'
 
@@ -14,7 +14,7 @@ const LotteryJackpot = () => {
   const lotteryPrizeAmountCake = balance.toLocaleString(undefined, {
     maximumFractionDigits: 2,
   })
-  const lotteryPrizeAmountBusd = new BigNumber(balance).multipliedBy(usePriceCakeBusd()).toNumber()
+  const lotteryPrizeAmountBusd = new BigNumber(balance).multipliedBy(usePriceIncomeBusd()).toNumber()
 
   return (
     <>

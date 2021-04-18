@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
+import { Menu as UikitMenu } from '@passive-income/dpex-uikit'
 import { useWeb3React } from '@web3-react/core'
 import { allLanguages } from 'config/localisation/languageCodes'
 import { LanguageContext } from 'contexts/Localisation/languageContext'
 import useTheme from 'hooks/useTheme'
 import useAuth from 'hooks/useAuth'
-import { usePriceCakeBusd, useProfile } from 'state/hooks'
+import { usePricePsiBusd, usePriceIncomeBusd, useProfile } from 'state/hooks'
 import config from './config'
 
 const Menu = (props) => {
@@ -13,8 +13,10 @@ const Menu = (props) => {
   const { login, logout } = useAuth()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
-  const cakePriceUsd = usePriceCakeBusd()
   const { profile } = useProfile()
+
+  const psiPriceUsd = usePricePsiBusd();
+  const incomePriceUsd = usePriceIncomeBusd();
 
   return (
     <UikitMenu
@@ -26,7 +28,8 @@ const Menu = (props) => {
       currentLang={selectedLanguage && selectedLanguage.code}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cakePriceUsd={cakePriceUsd.toNumber()}
+      psiPriceUsd={psiPriceUsd.toNumber()}
+      incomePriceUsd={incomePriceUsd.toNumber()}
       links={config}
       profile={{
         username: profile?.username,

@@ -1,15 +1,15 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { kebabCase } from 'lodash'
 import { useWeb3React } from '@web3-react/core'
-import { Toast, toastTypes } from '@pancakeswap-libs/uikit'
+import { Toast, toastTypes } from '@passive-income/dpex-uikit'
 import { useSelector, useDispatch } from 'react-redux'
 import { Team } from 'config/constants/types'
 import { getWeb3NoAccount } from 'utils/web3'
 import useRefresh from 'hooks/useRefresh'
 import {
   fetchFarmsPublicDataAsync,
-  fetchPoolsPublicDataAsync,
+  // fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
   push as pushToast,
   remove as removeToast,
@@ -27,7 +27,7 @@ export const useFetchPublicData = () => {
   const { slowRefresh } = useRefresh()
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync())
-    dispatch(fetchPoolsPublicDataAsync())
+    // dispatch(fetchPoolsPublicDataAsync())
   }, [dispatch, slowRefresh])
 
   useEffect(() => {
@@ -200,15 +200,51 @@ export const useGetApiPrice = (token: string) => {
   return prices[token.toLowerCase()]
 }
 
-export const usePriceCakeBusd = (): BigNumber => {
+export const usePricePsiBusd = (): BigNumber => {
   const ZERO = new BigNumber(0)
-  const cakeBnbFarm = useFarmFromPid(1)
-  const bnbBusdFarm = useFarmFromPid(2)
+  const psiBnbFarm = useFarmFromPid(0)
+  const bnbBusdFarm = useFarmFromPid(3)
 
   const bnbBusdPrice = bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : ZERO
-  const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(cakeBnbFarm.tokenPriceVsQuote) : ZERO
+  const psiBusdPrice = psiBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(psiBnbFarm.tokenPriceVsQuote) : ZERO
 
-  return cakeBusdPrice
+  return psiBusdPrice
+}
+
+export const usePriceIncomeBusd = (): BigNumber => {
+  const ZERO = new BigNumber(0)
+  const incomeBnbFarm = useFarmFromPid(1)
+  const bnbBusdFarm = useFarmFromPid(3)
+
+  const bnbBusdPrice = bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : ZERO
+  const incomeBusdPrice = incomeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(incomeBnbFarm.tokenPriceVsQuote) : ZERO
+
+  return incomeBusdPrice
+}
+
+const coingeckoApi = 'https://api.coingecko.com/api/v3/coins/{id}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false'
+export const useGetPriceDataFromCoingecko = (id: string) => {
+  const [data, setData] = useState<any | null>(null)
+  const finalApi = coingeckoApi.replace("{id}", id);
+
+  useEffect(() => {
+    if (data) return;
+    const fetchData = async () => {
+      try {
+        
+        const response = await fetch(finalApi)
+        const res: any = await response.json()
+        
+        setData(res)
+      } catch (error) {
+        console.error('Unable to fetch price data:', error)
+      }
+    }
+
+    fetchData()
+  }, [finalApi, setData, data])
+
+  return data
 }
 
 // Block

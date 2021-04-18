@@ -1993,10 +1993,21 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@pancakeswap-libs/eslint-config-pancake@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pancakeswap-libs/eslint-config-pancake/-/eslint-config-pancake-1.0.0.tgz#da5c17842d1cb0d575bca3de0c9404386c386151"
-  integrity sha512-/rE1jQsgDV+jUvYIJKzIlLGFSYwku8K67nprRMmsbhdG+FHdBJnclIyIbVY1NnVtuwGaP+uBQiS/tn6Zhiyx8w==
+"@passive-income/dpex-uikit@0.17.9":
+  version "0.17.9"
+  resolved "https://registry.yarnpkg.com/@passive-income/dpex-uikit/-/dpex-uikit-0.17.9.tgz#bc2065029d632ef82cd65212ac70b96fd1a1661d"
+  integrity sha512-ArxE3N0BQJNKtZK44fB4hHi3YpOz6Zf3y/NjcgcAELjnfaWJ+JLceRYhe3BVm9cjE8x4+0y6ApAH4UEny5Y19w==
+  dependencies:
+    "@types/lodash" "^4.14.162"
+    "@types/styled-system" "^5.1.10"
+    lodash "^4.17.20"
+    react-transition-group "^4.4.1"
+    styled-system "^5.1.5"
+
+"@passive-income/eslint-config-dpex@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@passive-income/eslint-config-dpex/-/eslint-config-dpex-1.0.1.tgz#b92c5b58d402c98d3d618133219689209bf81493"
+  integrity sha512-/knkwtskPqkxkud8eRRMlSSfAsarsYM5i1cpWfFSCzGRtOXvIBcCuKJK2h2Ovy5w/t8ZoNjqxToxgYugdQph8g==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.7.0"
     "@typescript-eslint/parser" "^4.7.0"
@@ -2006,17 +2017,6 @@
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
-
-"@pancakeswap-libs/uikit@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@pancakeswap-libs/uikit/-/uikit-0.14.1.tgz#8e42b80678da85d74d9075d49f617ed9171aaff6"
-  integrity sha512-PknRl6qIXSCPPCTseTCEnzaXuW8dowAGUbus500IEZMOtl+hZu+D0g8s0tG6DRcwEIWF1RLmYIWJjuJHiKv8IQ==
-  dependencies:
-    "@types/lodash" "^4.14.162"
-    "@types/styled-system" "^5.1.10"
-    lodash "^4.17.20"
-    react-transition-group "^4.4.1"
-    styled-system "^5.1.5"
 
 "@pedrouid/iso-crypto@^1.0.0":
   version "1.1.0"

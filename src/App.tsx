@@ -1,6 +1,6 @@
 import React, { useEffect, lazy } from 'react'
 import { Router, Redirect, Route, Switch } from 'react-router-dom'
-import { ResetCSS } from '@pancakeswap-libs/uikit'
+import { ResetCSS } from '@passive-income/dpex-uikit'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
 import { useFetchPriceList, useFetchProfile, useFetchPublicData } from 'state/hooks'
@@ -44,7 +44,7 @@ const App: React.FC = () => {
   useFetchPublicData()
   useFetchProfile()
   useFetchPriceList()
-  useGetDocumentTitlePrice()
+  // useGetDocumentTitlePrice()
 
   return (
     <Router history={history}>
@@ -54,15 +54,15 @@ const App: React.FC = () => {
         <SuspenseWithChunkError fallback={<PageLoader />}>
           <Switch>
             <Route path="/" exact>
-              <Home />
+              <Farms />
             </Route>
             <Route path="/farms">
               <Farms />
             </Route>
-            <Route path="/pools">
+            {/* <Route path="/pools">
               <Pools />
-            </Route>
-            <Route path="/lottery">
+            </Route> */}
+            {/* <Route path="/lottery">
               <Lottery />
             </Route>
             <Route path="/ifo">
@@ -79,17 +79,14 @@ const App: React.FC = () => {
             </Route>
             <Route path="/profile">
               <Profile />
-            </Route>
+            </Route> */}
             {/* Redirect */}
             <Route path="/staking">
               <Redirect to="/pools" />
             </Route>
-            <Route path="/syrup">
-              <Redirect to="/pools" />
-            </Route>
-            <Route path="/nft">
+            {/* <Route path="/nft">
               <Redirect to="/collectibles" />
-            </Route>
+            </Route> */}
             {/* 404 */}
             <Route component={NotFound} />
           </Switch>

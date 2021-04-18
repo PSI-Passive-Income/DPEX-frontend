@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Heading } from '@pancakeswap-libs/uikit'
+import { Heading } from '@passive-income/dpex-uikit'
 
 const Title = styled(Heading).attrs({ size: 'lg' })`
   color: ${({ theme }) => theme.colors.secondary};

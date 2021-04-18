@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { connectorLocalStorageKey, ConnectorNames } from '@pancakeswap-libs/uikit'
+import { connectorLocalStorageKey, ConnectorNames } from '@passive-income/dpex-uikit'
 import useAuth from 'hooks/useAuth'
 
 const useEagerConnect = () => {

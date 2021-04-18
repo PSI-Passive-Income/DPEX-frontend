@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceIncomeBusd } from 'state/hooks'
 
 const useGetDocumentTitlePrice = () => {
-  const cakePriceUsd = usePriceCakeBusd()
+  const incomePriceUsd = usePriceIncomeBusd()
 
-  const cakePriceUsdString = cakePriceUsd.eq(0)
+  const incomePriceUsdString = incomePriceUsd.eq(0)
     ? ''
-    : ` - $${cakePriceUsd.toNumber().toLocaleString(undefined, {
+    : ` - $${incomePriceUsd.toNumber().toLocaleString(undefined, {
         minimumFractionDigits: 3,
         maximumFractionDigits: 3,
       })}`
 
   useEffect(() => {
-    document.title = `PancakeSwap${cakePriceUsdString}`
-  }, [cakePriceUsdString])
+    document.title = `PancakeSwap${incomePriceUsdString}`
+  }, [incomePriceUsdString])
 }
 export default useGetDocumentTitlePrice
