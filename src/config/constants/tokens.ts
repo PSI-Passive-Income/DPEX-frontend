@@ -264,6 +264,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://linear.finance/',
   },
+  safemoon: {
+    symbol: 'SAFEMOON',
+    address: {
+      56: '0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://safemoon.net/',
+  },
   lit: {
     symbol: 'LIT',
     address: {
@@ -335,6 +344,15 @@ const tokens = {
     },
     decimals: 18,
     projectLink: 'https://www.helmet.insure/',
+  },
+  fuel: {
+    symbol: 'Fuel',
+    address: {
+      56: '0x2090c8295769791ab7a3cf1cc6e0aa19f35e441a',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://jetfuel.finance/',
   },
   btcst: {
     symbol: 'BTCST',
@@ -794,6 +812,24 @@ const tokens = {
     },
     decimals: 18,
     projectLink: 'https://dfi.money/#/',
+  },
+  julb: {
+    symbol: 'JULB',
+    address: {
+      97: '',
+      56: '0x32dffc3fe8e3ef3571bf8a72c0d0015c5373f41d',
+    },
+    decimals: 18,
+    projectLink: 'https://justliquidity.org/',
+  },
+  autov2: {
+    symbol: 'AUTOv2',
+    address: {
+      97: '',
+      56: '0xa184088a740c695e156f91f5cc086a06bb78b827',
+    },
+    decimals: 18,
+    projectLink: 'https://autofarm.network/',
   },
   xtz: {
     symbol: 'XTZ',
