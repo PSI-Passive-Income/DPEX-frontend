@@ -1,10 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useI18n from 'hooks/useI18n'
-import { Heading, Text } from '@pancakeswap-libs/uikit'
-import { BigNumber } from 'bignumber.js'
-import { usePriceCakeBusd } from 'state/hooks'
-import CardBusdValue from '../../Home/components/CardBusdValue'
+import { Heading, Text } from '@passive-income/dpex-uikit'
 
 export interface PrizeGridProps {
   lotteryPrizeAmount?: number

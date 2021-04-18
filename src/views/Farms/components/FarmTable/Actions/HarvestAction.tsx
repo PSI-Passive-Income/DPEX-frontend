@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Button } from '@pancakeswap-libs/uikit'
+import { Button } from '@passive-income/dpex-uikit'
 import BigNumber from 'bignumber.js'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useHarvest } from 'hooks/useHarvest'
 import useI18n from 'hooks/useI18n'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePriceIncomeBusd } from 'state/hooks'
 import { useCountUp } from 'react-countup'
 
 import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, Staked } from './styles'
@@ -14,14 +14,14 @@ import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, St
 const HarvestAction: React.FunctionComponent<FarmWithStakedValue> = ({ pid, userData }) => {
   const { account } = useWeb3React()
   const earningsBigNumber = userData && account ? new BigNumber(userData.earnings) : null
-  const cakePrice = usePriceCakeBusd()
+  const incomePrice = usePriceIncomeBusd()
   let earnings = null
   let earningsBusd = 0
   let displayBalance = '?'
 
   if (earningsBigNumber) {
     earnings = getBalanceNumber(earningsBigNumber)
-    earningsBusd = new BigNumber(earnings).multipliedBy(cakePrice).toNumber()
+    earningsBusd = new BigNumber(earnings).multipliedBy(incomePrice).toNumber()
     displayBalance = earnings.toLocaleString()
   }
 
@@ -45,8 +45,8 @@ const HarvestAction: React.FunctionComponent<FarmWithStakedValue> = ({ pid, user
   return (
     <ActionContainer>
       <ActionTitles>
-        <Title>CAKE </Title>
-        <Subtle>{TranslateString(1072, 'EARNED')}</Subtle>
+        <Title>Income </Title>
+        <Subtle>{TranslateString(999, 'EARNED')}</Subtle>
       </ActionTitles>
       <ActionContent>
         <div>

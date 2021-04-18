@@ -1,18 +1,18 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import { IconButton, useModal, CalculateIcon } from '@pancakeswap-libs/uikit'
-import ApyCalculatorModal from 'components/ApyCalculatorModal'
+import { IconButton, useModal, CalculateIcon } from '@passive-income/dpex-uikit'
+import ApyCalculatorModal from './ApyCalculatorModal'
 
 export interface ApyButtonProps {
   lpLabel?: string
-  cakePrice?: BigNumber
-  apr?: number
+  incomePrice?: BigNumber
+  apy?: number
   addLiquidityUrl?: string
 }
 
-const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, cakePrice, apr, addLiquidityUrl }) => {
+const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, incomePrice, apy, addLiquidityUrl }) => {
   const [onPresentApyModal] = useModal(
-    <ApyCalculatorModal lpLabel={lpLabel} cakePrice={cakePrice} apr={apr} addLiquidityUrl={addLiquidityUrl} />,
+    <ApyCalculatorModal lpLabel={lpLabel} incomePrice={incomePrice} apy={apy} addLiquidityUrl={addLiquidityUrl} />,
   )
 
   const handleClickButton = (event): void => {

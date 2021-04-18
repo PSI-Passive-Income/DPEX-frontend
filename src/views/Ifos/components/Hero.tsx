@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Text } from '@pancakeswap-libs/uikit'
+import { Heading, Text } from '@passive-income/dpex-uikit'
 import Container from 'components/layout/Container'
 import useI18n from 'hooks/useI18n'
 

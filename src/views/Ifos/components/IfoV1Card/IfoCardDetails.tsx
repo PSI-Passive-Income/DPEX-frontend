@@ -9,7 +9,7 @@ import {
   Button,
   ChevronDownIcon,
   ChevronUpIcon,
-} from '@pancakeswap-libs/uikit'
+} from '@passive-income/dpex-uikit'
 import useI18n from 'hooks/useI18n'
 import { PublicIfoData } from 'hooks/ifo/v1/types'
 import { Ifo } from 'config/constants/types'

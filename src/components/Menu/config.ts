@@ -1,10 +1,10 @@
-import { MenuEntry } from '@pancakeswap-libs/uikit'
+import { MenuEntry } from '@passive-income/dpex-uikit'
 
 const config: MenuEntry[] = [
   {
     label: 'Home',
     icon: 'HomeIcon',
-    href: '/',
+    href: process.env.REACT_APP_PSIDEX_URL,
   },
   {
     label: 'Trade',
@@ -12,11 +12,15 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.pancakeswap.finance',
+        href: process.env.REACT_APP_PSIDEX_URL,
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.pancakeswap.finance/#/pool',
+        href: `${process.env.REACT_APP_PSIDEX_URL}/#/pool`,
+      },
+      {
+        label: 'Bridge',
+        href: 'https://www.binance.org/en/bridge?utm_source=DPEX',
       },
     ],
   },
@@ -24,99 +28,92 @@ const config: MenuEntry[] = [
     label: 'Farms',
     icon: 'FarmIcon',
     href: '/farms',
+    initialOpenState: true,
   },
+  // {
+  //   label: 'Pools',
+  //   icon: 'PoolIcon',
+  //   href: '/pools',
+  // },
+  // {
+  //   label: 'Lottery',
+  //   icon: 'TicketIcon',
+  //   href: '/lottery',
+  // },
+  // {
+  //   label: 'Collectibles',
+  //   icon: 'NftIcon',
+  //   href: '/collectibles',
+  // },
+  // {
+  //   label: 'Teams & Profile',
+  //   icon: 'GroupsIcon',
+  //   calloutClass: 'rainbow',
+  //   items: [
+  //     {
+  //       label: 'Leaderboard',
+  //       href: '/teams',
+  //     },
+  //     {
+  //       label: 'Task Center',
+  //       href: '/profile/tasks',
+  //     },
+  //     {
+  //       label: 'Your Profile',
+  //       href: '/profile',
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: 'Info',
+  //   icon: 'InfoIcon',
+  //   items: [
+  //     {
+  //       label: 'Overview',
+  //       href: 'https://pancakeswap.info',
+  //     },
+  //     {
+  //       label: 'Tokens',
+  //       href: 'https://pancakeswap.info/tokens',
+  //     },
+  //     {
+  //       label: 'Pairs',
+  //       href: 'https://pancakeswap.info/pairs',
+  //     },
+  //     {
+  //       label: 'Accounts',
+  //       href: 'https://pancakeswap.info/accounts',
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: 'IFO',
+  //   icon: 'IfoIcon',
+  //   href: '/ifo',
+  // },
   {
-    label: 'Pools',
-    icon: 'PoolIcon',
-    href: '/pools',
-  },
-  {
-    label: 'Lottery',
-    icon: 'TicketIcon',
-    href: '/lottery',
-  },
-  {
-    label: 'Collectibles',
-    icon: 'NftIcon',
-    href: '/collectibles',
-  },
-  {
-    label: 'Team Battle',
-    icon: 'TeamBattleIcon',
-    href: '/competition',
-    status: {
-      text: 'CLAIM',
-      color: 'warning',
-    },
-  },
-  {
-    label: 'Teams & Profile',
-    icon: 'GroupsIcon',
+    label: "More",
+    icon: "MoreIcon",
     items: [
+      // {
+      //   label: "Voting",
+      //   href: "https://voting.pancakeswap.finance",
+      // },
       {
-        label: 'Leaderboard',
-        href: '/teams',
+        label: "PSI Website",
+        href: "https://www.passive-income.io/",
       },
       {
-        label: 'Task Center',
-        href: '/profile/tasks',
+        label: "Github",
+        href: "https://github.com/PSI-Passive-Income",
       },
       {
-        label: 'Your Profile',
-        href: '/profile',
-      },
-    ],
-  },
-  {
-    label: 'Info',
-    icon: 'InfoIcon',
-    items: [
-      {
-        label: 'Overview',
-        href: 'https://pancakeswap.info',
+        label: "Docs",
+        href: "https://passiveincome.gitbook.io/whitepaper/",
       },
       {
-        label: 'Tokens',
-        href: 'https://pancakeswap.info/tokens',
-      },
-      {
-        label: 'Pairs',
-        href: 'https://pancakeswap.info/pairs',
-      },
-      {
-        label: 'Accounts',
-        href: 'https://pancakeswap.info/accounts',
-      },
-    ],
-  },
-  {
-    label: 'IFO',
-    icon: 'IfoIcon',
-    href: '/ifo',
-  },
-  {
-    label: 'More',
-    icon: 'MoreIcon',
-    items: [
-      {
-        label: 'Contact',
-        href: 'https://docs.pancakeswap.finance/contact-us',
-      },
-      {
-        label: 'Voting',
-        href: 'https://voting.pancakeswap.finance',
-      },
-      {
-        label: 'Github',
-        href: 'https://github.com/pancakeswap',
-      },
-      {
-        label: 'Docs',
-        href: 'https://docs.pancakeswap.finance',
-      },
-      {
-        label: 'Blog',
-        href: 'https://pancakeswap.medium.com',
+        label: "Blog",
+        href: "https://p6ss1ve1nc0me.medium.com/passive-income-psi-375e6768cecf",
       },
       {
         label: 'Merch',

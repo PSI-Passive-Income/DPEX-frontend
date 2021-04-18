@@ -1,15 +1,15 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
-import { Modal, Text, LinkExternal, Flex } from '@pancakeswap-libs/uikit'
+import { Modal, Text, LinkExternal, Flex } from '@passive-income/dpex-uikit'
 import useI18n from 'hooks/useI18n'
 import { cakeEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
 
 interface ApyCalculatorModalProps {
   onDismiss?: () => void
   lpLabel?: string
-  cakePrice?: BigNumber
-  apr?: number
+  incomePrice?: BigNumber
+  apy?: number
   addLiquidityUrl?: string
 }
 
@@ -32,24 +32,20 @@ const Description = styled(Text)`
 const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
   onDismiss,
   lpLabel,
-  cakePrice,
-  apr,
+  incomePrice,
+  apy,
   addLiquidityUrl,
 }) => {
   const TranslateString = useI18n()
-  const oneThousandDollarsWorthOfCake = 1000 / cakePrice.toNumber()
+  const oneThousandDollarsWorthOfCake = 1000 / incomePrice.toNumber()
 
-  const cakeEarnedPerThousand1D = cakeEarnedPerThousandDollarsCompounding({ numberOfDays: 1, farmApr: apr, cakePrice })
-  const cakeEarnedPerThousand7D = cakeEarnedPerThousandDollarsCompounding({ numberOfDays: 7, farmApr: apr, cakePrice })
-  const cakeEarnedPerThousand30D = cakeEarnedPerThousandDollarsCompounding({
-    numberOfDays: 30,
-    farmApr: apr,
-    cakePrice,
-  })
-  const cakeEarnedPerThousand365D = cakeEarnedPerThousandDollarsCompounding({
+  const cakeEarnedPerThousand1D = calculateCakeEarnedPerThousandDollars({ numberOfDays: 1, farmApy: apy, incomePrice })
+  const cakeEarnedPerThousand7D = calculateCakeEarnedPerThousandDollars({ numberOfDays: 7, farmApy: apy, incomePrice })
+  const cakeEarnedPerThousand30D = calculateCakeEarnedPerThousandDollars({ numberOfDays: 30, farmApy: apy, incomePrice })
+  const cakeEarnedPerThousand365D = calculateCakeEarnedPerThousandDollars({
     numberOfDays: 365,
-    farmApr: apr,
-    cakePrice,
+    farmApy: apy,
+    incomePrice,
   })
 
   return (

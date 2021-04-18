@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@pancakeswap-libs/uikit'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@passive-income/dpex-uikit'
 import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import useI18n from 'hooks/useI18n'
 import BigNumber from 'bignumber.js'
-import { getFarmApr } from 'utils/apr'
-import { useFarms, usePriceCakeBusd, useGetApiPrices } from 'state/hooks'
-import { getAddress } from 'utils/addressHelpers'
+import { getFarmApy } from 'utils/apy'
+import { useFarms, usePriceIncomeBusd, useGetApiPrices } from 'state/hooks'
 
 const StyledFarmStakingCard = styled(Card)`
   margin-left: auto;
@@ -26,7 +25,7 @@ const EarnAPRCard = () => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
   const prices = useGetApiPrices()
-  const cakePrice = usePriceCakeBusd()
+  const incomePrice = usePriceIncomeBusd()
 
   const highestApr = useMemo(() => {
     const aprs = farmsLP
@@ -36,14 +35,14 @@ const EarnAPRCard = () => {
         if (farm.lpTotalInQuoteToken && prices) {
           const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
           const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
-          return getFarmApr(farm.poolWeight, cakePrice, totalLiquidity)
+          return getFarmApy(farm.poolWeight, incomePrice, totalLiquidity)
         }
         return null
       })
 
-    const maxApr = max(aprs)
-    return maxApr?.toLocaleString('en-US', { maximumFractionDigits: 2 })
-  }, [cakePrice, farmsLP, prices])
+    const maxApy = max(apys)
+    return maxApy?.toLocaleString('en-US', { maximumFractionDigits: 2 })
+  }, [incomePrice, farmsLP, prices])
 
   return (
     <StyledFarmStakingCard>

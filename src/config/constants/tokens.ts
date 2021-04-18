@@ -3,6 +3,24 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
+  psi: {
+    symbol: 'PSI',
+    address: {
+      56: '0x9A5d9c681Db43D9863e9279c800A39449B7e1d6f',
+      97: '0x066Bd99080eC62FE0E28bA687A53aC00794c17b6',
+    },
+    decimals: 18,
+    projectLink: 'https://passive-income.io/',
+  },
+  inc: {
+    symbol: 'INC',
+    address: {
+      56: '0xDc3890618bd71d3eF3eC18BB14a510c0dA528947',
+      97: '0x75d8b48342149ff7F7f1786e6f8B839Ca669e4cf',
+    },
+    decimals: 18,
+    projectLink: 'https://psidex.passive-income.io/',
+  },
   cake: {
     symbol: 'CAKE',
     address: {
@@ -601,7 +619,7 @@ const tokens = {
     symbol: 'BUSD',
     address: {
       56: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
-      97: '',
+      97: '0x8301f2213c0eed49a7e28ae4c3e91722919b8b47',
     },
     decimals: 18,
     projectLink: 'https://www.paxos.com/busd/',

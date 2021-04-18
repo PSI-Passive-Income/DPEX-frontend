@@ -1,4 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Text, Heading, BaseLayout, Button, LinkExternal, Flex, Image } from '@passive-income/dpex-uikit'
 import { ifosConfig } from 'config/constants'
 import IfoV2Card from './components/IfoV2Card'
 import IfoCardLayout from './components/IfoCardLayout'

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Modal, Flex, Text } from '@pancakeswap-libs/uikit'
-import { useAppDispatch } from 'state'
+import { Modal, Flex, Text } from '@passive-income/dpex-uikit'
+import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
 import useI18n from 'hooks/useI18n'
 import { useCake, usePancakeRabbits, useProfile } from 'hooks/useContract'
