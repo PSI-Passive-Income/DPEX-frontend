@@ -2,9 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import every from 'lodash/every'
 import {
-  Stepper,
-  Step,
-  StepStatus,
   Card,
   CardBody,
   Heading,
@@ -12,7 +9,7 @@ import {
   Button,
   Link,
   OpenNewIcon,
-} from '@pancakeswap-libs/uikit'
+} from '@passive-income/dpex-uikit'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import useI18n from 'hooks/useI18n'
 import useTokenBalance from 'hooks/useTokenBalance'
@@ -130,14 +127,14 @@ const IfoSteps: React.FC<Props> = ({ currency }) => {
       <Heading as="h2" size="xl" color="secondary" mb="24px" textAlign="center">
         {TranslateString(999, 'How to Take Part')}
       </Heading>
-      <Stepper>
+      {/* <Stepper>
         {stepsValidationStatus.map((_, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <Step key={index} index={index} status={getStatusProp(index)}>
             <Card>{renderCardBody(index)}</Card>
           </Step>
         ))}
-      </Stepper>
+      </Stepper> */}
     </Wrapper>
   )
 }

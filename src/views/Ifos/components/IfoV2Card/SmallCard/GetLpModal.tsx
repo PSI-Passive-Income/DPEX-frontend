@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, ModalBody, Text, Image, Button, Link, OpenNewIcon } from '@pancakeswap-libs/uikit'
+import { Modal, Text, Image, Button, Link, OpenNewIcon } from '@passive-income/dpex-uikit'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { Token } from 'config/constants/types'
 import useI18n from 'hooks/useI18n'
@@ -13,7 +13,7 @@ const GetLpModal: React.FC<Partial<Props>> = ({ currency, onDismiss }) => {
   const TranslateString = useI18n()
   return (
     <Modal title="LP Tokens required" onDismiss={onDismiss}>
-      <ModalBody maxWidth="288px">
+      {/* <ModalBody maxWidth="288px">
         <Image
           src={`/images/farms/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
           width={72}
@@ -40,7 +40,7 @@ const GetLpModal: React.FC<Partial<Props>> = ({ currency, onDismiss }) => {
         >
           {TranslateString(999, 'Get LP tokens')}
         </Button>
-      </ModalBody>
+      </ModalBody> */}
     </Modal>
   )
 }

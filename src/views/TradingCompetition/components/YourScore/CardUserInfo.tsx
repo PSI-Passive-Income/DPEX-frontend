@@ -4,15 +4,10 @@ import {
   Heading,
   Flex,
   Skeleton,
-  MedalBronzeIcon,
-  MedalGoldIcon,
-  MedalPurpleIcon,
-  MedalSilverIcon,
-  MedalTealIcon,
   BlockIcon,
   Button,
   useModal,
-} from '@pancakeswap-libs/uikit'
+} from '@passive-income/dpex-uikit'
 import styled from 'styled-components'
 import useI18n from 'hooks/useI18n'
 import { LIVE } from 'config/constants/trading-competition/easterPhases'
@@ -56,39 +51,10 @@ const CardUserInfo: React.FC<YourScoreProps> = ({
   const shouldShowUserRanks = account && hasRegistered
 
   const getMedal = (currentRank: ReactText) => {
-    if (currentRank === 1) {
-      return {
-        current: <MedalGoldIcon />,
-        next: null,
-      }
-    }
-    if (currentRank <= 10) {
-      return {
-        current: <MedalSilverIcon />,
-        next: <MedalGoldIcon />,
-      }
-    }
-    if (currentRank <= 100) {
-      return {
-        current: <MedalBronzeIcon />,
-        next: <MedalSilverIcon />,
-      }
-    }
-    if (currentRank <= 500) {
-      return {
-        current: <MedalPurpleIcon />,
-        next: <MedalBronzeIcon />,
-      }
-    }
-    if (currentRank > 500) {
-      return {
-        current: <MedalTealIcon />,
-        next: <MedalPurpleIcon />,
-      }
-    }
+
     return {
       current: <BlockIcon />,
-      next: <MedalTealIcon />,
+      next: <BlockIcon />,
     }
   }
 

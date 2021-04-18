@@ -4,18 +4,10 @@ import {
   Box,
   CheckmarkCircleIcon,
   Flex,
-  MedalBronzeIcon,
-  MedalGoldIcon,
-  MedalPurpleIcon,
-  MedalSilverIcon,
-  MedalTealIcon,
-  CrownIcon,
   Tab,
   TabMenu,
-  Text,
-  TeamPlayerIcon,
-  TrophyGoldIcon,
-} from '@pancakeswap-libs/uikit'
+  Text
+} from '@passive-income/dpex-uikit'
 import useI18n from 'hooks/useI18n'
 import easterPrizes, { Tiers, Rank } from 'config/constants/trading-competition/easter'
 import { Td, BoldTd, StyledPrizeTable } from '../../StyledPrizeTable'
@@ -27,54 +19,7 @@ const COLOR_PURPLE = '#A57CFD'
 const COLOR_TEAL = '#4CD2DD'
 
 const tierStyleMap = {
-  [Tiers.GOLD]: {
-    icon: MedalGoldIcon,
-    label: {
-      id: 999,
-      fallback: 'Gold',
-    },
-    color: COLOR_GOLD,
-  },
-  [Tiers.SILVER]: {
-    icon: MedalSilverIcon,
-    label: {
-      id: 999,
-      fallback: 'Silver',
-    },
-    color: COLOR_SILVER,
-  },
-  [Tiers.BRONZE]: {
-    icon: MedalBronzeIcon,
-    label: {
-      id: 999,
-      fallback: 'Bronze',
-    },
-    color: COLOR_BRONZE,
-  },
-  [Tiers.SILVER]: {
-    icon: MedalSilverIcon,
-    label: {
-      id: 999,
-      fallback: 'Silver',
-    },
-    color: COLOR_SILVER,
-  },
-  [Tiers.PURPLE]: {
-    icon: MedalPurpleIcon,
-    label: {
-      id: 999,
-      fallback: 'Purple',
-    },
-    color: COLOR_PURPLE,
-  },
-  [Tiers.TEAL]: {
-    icon: MedalTealIcon,
-    label: {
-      id: 999,
-      fallback: 'Teal',
-    },
-    color: COLOR_TEAL,
-  },
+  
 }
 
 const getTotalAchievementPoints = (achievements: Rank['achievements']) => {

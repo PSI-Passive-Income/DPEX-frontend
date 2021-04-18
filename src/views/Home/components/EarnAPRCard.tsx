@@ -5,7 +5,7 @@ import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import useI18n from 'hooks/useI18n'
 import BigNumber from 'bignumber.js'
-import { getFarmApy } from 'utils/apy'
+import { getFarmApy } from '../../../utils/apy'
 import { useFarms, usePriceIncomeBusd, useGetApiPrices } from 'state/hooks'
 
 const StyledFarmStakingCard = styled(Card)`

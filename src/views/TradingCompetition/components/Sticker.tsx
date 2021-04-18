@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Flex } from '@pancakeswap-libs/uikit'
+import { Flex } from '@passive-income/dpex-uikit'
 
 interface StickerProps {
   backgroundColor?: string

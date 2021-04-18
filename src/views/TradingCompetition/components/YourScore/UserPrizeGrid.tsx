@@ -4,11 +4,8 @@ import {
   BlockIcon,
   CheckmarkCircleIcon,
   Flex,
-  CrownIcon,
-  Text,
-  TeamPlayerIcon,
-  TrophyGoldIcon,
-} from '@pancakeswap-libs/uikit'
+  Text
+} from '@passive-income/dpex-uikit'
 import useI18n from 'hooks/useI18n'
 import { UserTradingInformationProps } from '../../types'
 import { useCompetitionCakeRewards, getRewardGroupAchievements } from '../../helpers'
@@ -47,9 +44,6 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
           </BoldTd>
           <Td>
             <Flex alignItems="center" flexWrap="wrap" justifyContent="center" width="100%">
-              {champion && <CrownIcon mr={[0, '4px']} />}
-              {teamPlayer && <TeamPlayerIcon mr={[0, '4px']} />}
-              <TrophyGoldIcon mr={[0, '4px']} />
               <Text fontSize="12px" color="textSubtle">
                 + {userPointReward} {TranslateString(999, 'points')}
               </Text>

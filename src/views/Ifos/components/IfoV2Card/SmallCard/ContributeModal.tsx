@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
-import { Modal, ModalBody, Text, Image, Button, BalanceInput, Flex } from '@pancakeswap-libs/uikit'
+import { Modal, Text, Image, Button, BalanceInput, Flex } from '@passive-income/dpex-uikit'
 import { PoolIds, Ifo } from 'config/constants/types'
 import { WalletIfoData, PublicIfoData } from 'hooks/ifo/v2/types'
 import useI18n from 'hooks/useI18n'
@@ -90,7 +90,7 @@ const ContributeModal: React.FC<Props> = ({
 
   return (
     <Modal title={`Contribute ${currency.symbol}`} onDismiss={onDismiss}>
-      <ModalBody maxWidth="320px">
+      {/* <ModalBody maxWidth="320px">
         {limitPerUserInLP.isGreaterThan(0) && (
           <Flex justifyContent="space-between" mb="16px">
             <Text>{TranslateString(999, 'Max. LP token entry')}</Text>
@@ -147,7 +147,7 @@ const ContributeModal: React.FC<Props> = ({
           onApprove={handleApprove}
           onConfirm={handleConfirm}
         />
-      </ModalBody>
+      </ModalBody> */}
     </Modal>
   )
 }

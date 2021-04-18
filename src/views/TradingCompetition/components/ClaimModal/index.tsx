@@ -8,11 +8,8 @@ import {
   AutoRenewIcon,
   Heading,
   Text,
-  Image,
-  CrownIcon,
-  TrophyGoldIcon,
-  TeamPlayerIcon,
-} from '@pancakeswap-libs/uikit'
+  Image
+} from '@passive-income/dpex-uikit'
 import useI18n from 'hooks/useI18n'
 import { useTradingCompetitionContract } from 'hooks/useContract'
 import { useToast } from 'state/hooks'
@@ -66,9 +63,6 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
         </Text>
         <Flex mt="16px" alignItems="center">
           {/* achievements */}
-          <TrophyGoldIcon mr={[0, '4px']} />
-          {champion && <CrownIcon mr={[0, '4px']} />}
-          {teamPlayer && <TeamPlayerIcon mr={[0, '4px']} />}
           <Text ml={['4px', '8px']}>
             +{userPointReward} {TranslateString(999, 'Points')}
           </Text>

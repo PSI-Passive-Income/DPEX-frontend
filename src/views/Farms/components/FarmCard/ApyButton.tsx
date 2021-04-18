@@ -1,7 +1,7 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
 import { IconButton, useModal, CalculateIcon } from '@passive-income/dpex-uikit'
-import ApyCalculatorModal from './ApyCalculatorModal'
+import ApyCalculatorModal from '../../../../components/ApyCalculatorModal'
 
 export interface ApyButtonProps {
   lpLabel?: string

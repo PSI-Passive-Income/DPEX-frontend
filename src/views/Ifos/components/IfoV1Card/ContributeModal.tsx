@@ -3,14 +3,13 @@ import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
 import { Modal, LinkExternal, Box, Text } from '@passive-income/dpex-uikit'
-import BalanceInput from 'components/BalanceInput'
+import BalanceInput from './BalanceInput'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { getBalanceNumber } from 'utils/formatBalance'
 import useI18n from 'hooks/useI18n'
 import ApproveConfirmButtons from 'views/Profile/components/ApproveConfirmButtons'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { useERC20 } from 'hooks/useContract'
-import BalanceInput from './BalanceInput'
 
 interface Props {
   currency: string

@@ -46,7 +46,7 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
   const twoMatchesAmount = +((lotteryPrizeAmount / 100) * 10).toFixed(0)
   const burnAmount = +((lotteryPrizeAmount / 100) * 20).toFixed(0)
   const TranslateString = useI18n()
-  const cakeBusdPrice = usePriceCakeBusd()
+  const cakeBusdPrice = usePriceIncomeBusd()
 
   const getCakeBusdValue = (amount: number) => {
     return new BigNumber(amount).multipliedBy(cakeBusdPrice).toNumber()
