@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Team } from 'config/constants/types'
 import { getWeb3NoAccount } from 'utils/web3'
 import useRefresh from 'hooks/useRefresh'
+import tokens from 'config/constants/tokens'
 import {
   fetchFarmsPublicDataAsync,
   // fetchPoolsPublicDataAsync,
@@ -197,7 +198,12 @@ export const useGetApiPrice = (token: string) => {
     return null
   }
 
-  return prices[token.toLowerCase()]
+  const tokenAddress = tokens[token.toLowerCase()]?.address[56];
+  if (!tokenAddress) {
+    return null
+  }
+
+  return prices[tokenAddress.toLowerCase()]
 }
 
 export const usePricePsiBusd = (): BigNumber => {

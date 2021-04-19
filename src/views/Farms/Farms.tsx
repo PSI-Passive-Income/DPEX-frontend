@@ -16,6 +16,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { getFarmApy } from 'utils/apy'
 import { orderBy } from 'lodash'
 
+import tokens from 'config/constants/tokens'
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import Table from './components/FarmTable/FarmTable'
 import FarmTabButtons from './components/FarmTabButtons'
@@ -124,10 +125,10 @@ const Farms: React.FC = () => {
 
   if (prices && Object.keys(prices).length > 0 && psiPrice && incomePrice) {
     // eslint-disable-next-line prefer-object-spread
-    prices = Object.assign({}, prices, {
-      psi: psiPrice.toNumber(),
-      inc: incomePrice.toNumber()
-    })
+    const psiAndIncomePrice = {};
+    psiAndIncomePrice[`${tokens.psi.address[56].toLowerCase()}`] = prices[`${tokens.psi.address[56].toLowerCase()}`] ?? psiPrice.toNumber()
+    psiAndIncomePrice[`${tokens.inc.address[56].toLowerCase()}`] = prices[`${tokens.inc.address[56].toLowerCase()}`] ?? incomePrice.toNumber()
+    prices = { ...prices, ...psiAndIncomePrice}
   }
 
   const dispatch = useDispatch()
@@ -178,7 +179,7 @@ const Farms: React.FC = () => {
           return farm
         }
 
-        const quoteTokenPriceUsd = prices[farm.quoteToken.symbol.toLowerCase()]
+        const quoteTokenPriceUsd = prices[farm.quoteToken.address[56].toLowerCase()]
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
         const apy = isActive ? getFarmApy(farm.poolWeight, incomePrice, totalLiquidity) : 0
 

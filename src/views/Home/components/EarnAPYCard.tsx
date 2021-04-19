@@ -33,7 +33,7 @@ const EarnAPYCard = () => {
       .filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
       .map((farm) => {
         if (farm.lpTotalInQuoteToken && prices) {
-          const quoteTokenPriceUsd = prices[farm.quoteToken.symbol.toLowerCase()]
+          const quoteTokenPriceUsd = prices[farm.quoteToken.address[56].toLowerCase()]
           const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
           return getFarmApy(farm.poolWeight, incomePrice, totalLiquidity)
         }

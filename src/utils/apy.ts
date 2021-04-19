@@ -28,8 +28,9 @@ export const getPoolApy = (
  * @param poolLiquidityUsd Total pool liquidity in USD
  * @returns
  */
-export const getFarmApy = (poolWeight: BigNumber, incomePriceUsd: BigNumber, poolLiquidityUsd: BigNumber): number => {
-  const yearlyInconmeRewardAllocation = INCOME_PER_BLOCK.times(BLOCKS_PER_YEAR).div(1**18).times(poolWeight)
+export const getFarmApy = (poolWeight: BigNumber | string, incomePriceUsd: BigNumber, poolLiquidityUsd: BigNumber): number => {
+  const finalPoolWeight: BigNumber = typeof(poolWeight) === "string" ? new BigNumber(poolWeight) : poolWeight;
+  const yearlyInconmeRewardAllocation = INCOME_PER_BLOCK.times(BLOCKS_PER_YEAR).times(finalPoolWeight).div(10**18)
   const apy = yearlyInconmeRewardAllocation.times(incomePriceUsd).div(poolLiquidityUsd).times(100)
   return apy.isNaN() || !apy.isFinite() ? null : apy.toNumber()
 }
