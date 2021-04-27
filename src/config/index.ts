@@ -15,7 +15,7 @@ export const BSC_BLOCK_TIME = 3
 // CAKE_PER_BLOCK in config/index.ts = 40 as we only change the amount sent to the burn pool which is effectively a farm.
 // CAKE/Block in components/CakeStats.tsx = 22 (40 - Amount sent to burn pool)
 
-export const INCOME_PER_BLOCK = new BigNumber(85616438356164380)
+export const INCOME_PER_BLOCK = new BigNumber(856164383561643800)
 export const BLOCKS_PER_YEAR = new BigNumber((60 / BSC_BLOCK_TIME) * 60 * 24 * 365) // 10512000
 export const BASE_URL = `${process.env.REACT_APP_PSIDEX_URL}`
 export const BASE_EXCHANGE_URL = `${process.env.REACT_APP_PSIDEX_URL}`
