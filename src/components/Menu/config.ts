@@ -35,7 +35,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Bridge',
-        href: 'https://www.binance.org/en/bridge?utm_source=DPEX',
+        href: 'https://www.binance.org/en/bridge?utm_source=PSIDEX',
       },
     ],
   },
