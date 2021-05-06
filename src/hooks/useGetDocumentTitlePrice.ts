@@ -11,9 +11,9 @@ const useGetDocumentTitlePrice = () => {
           minimumFractionDigits: 3,
           maximumFractionDigits: 3,
         })}`
-  priceString = incPriceUsd.eq(0)
+  priceString += incPriceUsd.eq(0)
       ? ''
-      : ` | PSI - $${incPriceUsd.toNumber().toLocaleString(undefined, {
+      : ` | INC - $${incPriceUsd.toNumber().toLocaleString(undefined, {
           minimumFractionDigits: 3,
           maximumFractionDigits: 3,
         })}`
