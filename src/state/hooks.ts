@@ -206,26 +206,19 @@ export const useGetApiPrice = (token: string) => {
   return prices[tokenAddress.toLowerCase()]
 }
 
-export const usePricePsiBusd = (): BigNumber => {
-  const ZERO = new BigNumber(0)
-  const psiBnbFarm = useFarmFromPid(0)
+export const usePriceBnbBusd = (): BigNumber => {
   const bnbBusdFarm = useFarmFromPid(3)
-
-  const bnbBusdPrice = bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : ZERO
-  const psiBusdPrice = psiBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(psiBnbFarm.tokenPriceVsQuote) : ZERO
-
-  return psiBusdPrice
+  return bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : new BigNumber(0)
 }
-
+export const usePricePsiBusd = (): BigNumber => {
+  const psiBnbFarm = useFarmFromPid(0)
+  const bnbBusdPrice = usePriceBnbBusd()
+  return psiBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(psiBnbFarm.tokenPriceVsQuote) : new BigNumber(0)
+}
 export const usePriceIncomeBusd = (): BigNumber => {
-  const ZERO = new BigNumber(0)
   const incomeBnbFarm = useFarmFromPid(1)
-  const bnbBusdFarm = useFarmFromPid(3)
-
-  const bnbBusdPrice = bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : ZERO
-  const incomeBusdPrice = incomeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(incomeBnbFarm.tokenPriceVsQuote) : ZERO
-
-  return incomeBusdPrice
+  const bnbBusdPrice = usePriceBnbBusd()
+  return incomeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(incomeBnbFarm.tokenPriceVsQuote) : new BigNumber(0)
 }
 
 const coingeckoApi = 'https://api.coingecko.com/api/v3/coins/{id}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false'
