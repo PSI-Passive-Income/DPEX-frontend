@@ -44,7 +44,7 @@ const App: React.FC = () => {
   useFetchPublicData()
   useFetchProfile()
   useFetchPriceList()
-  // useGetDocumentTitlePrice()
+  useGetDocumentTitlePrice()
 
   return (
     <Router history={history}>

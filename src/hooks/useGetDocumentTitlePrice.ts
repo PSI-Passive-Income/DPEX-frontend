@@ -1,18 +1,25 @@
 import { useEffect } from 'react'
-import { usePriceIncomeBusd } from 'state/hooks'
+import { usePricePsiBusd, usePriceIncomeBusd } from 'state/hooks'
 
 const useGetDocumentTitlePrice = () => {
-  const incomePriceUsd = usePriceIncomeBusd()
+  const psiPriceUsd = usePricePsiBusd()
+  const incPriceUsd = usePriceIncomeBusd()
 
-  const incomePriceUsdString = incomePriceUsd.eq(0)
-    ? ''
-    : ` - $${incomePriceUsd.toNumber().toLocaleString(undefined, {
-        minimumFractionDigits: 3,
-        maximumFractionDigits: 3,
-      })}`
+  let priceString = psiPriceUsd.eq(0)
+      ? ''
+      : ` | PSI - $${psiPriceUsd.toNumber().toLocaleString(undefined, {
+          minimumFractionDigits: 3,
+          maximumFractionDigits: 3,
+        })}`
+  priceString = incPriceUsd.eq(0)
+      ? ''
+      : ` | PSI - $${incPriceUsd.toNumber().toLocaleString(undefined, {
+          minimumFractionDigits: 3,
+          maximumFractionDigits: 3,
+        })}`
 
   useEffect(() => {
-    document.title = `PancakeSwap${incomePriceUsdString}`
-  }, [incomePriceUsdString])
+    document.title = `PSI Dex${priceString}`
+  }, [priceString])
 }
 export default useGetDocumentTitlePrice
