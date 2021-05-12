@@ -10,8 +10,24 @@ const initialState: PriceState = {
 
 // Thunks
 export const fetchPrices = createAsyncThunk<PriceApiThunk>('prices/fetch', async () => {
-  const response = await fetch('https://psidex.passive-income.io/api/tokens')
-  const data = (await response.json()) as PriceApiResponse
+  let data: PriceApiResponse;
+  try {
+    const response = await fetch('https://psidex.passive-income.io/api/tokens')
+    data = (await response.json()) as PriceApiResponse
+  } catch(err) {
+    try {
+      console.error(err);
+      const response = await fetch('https://api.pancakeswap.info/api/v2/tokens')
+      data = (await response.json()) as PriceApiResponse
+    } catch(pcErr) {
+      console.error(pcErr);
+      data = {
+        ...initialState,
+        data: {},
+        updated_at: null
+      }
+    }
+  }
 
   // Return normalized token names
   return {
