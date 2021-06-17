@@ -21,6 +21,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://psidex.passive-income.io/',
   },
+  knight: {
+    symbol: 'KNIGHT',
+    address: {
+      56: '0x16c0e0936e1b38ff1f9b8a1e75d8ba29adf87d30',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.knightsdefi.com/',
+  },
   cake: {
     symbol: 'CAKE',
     address: {

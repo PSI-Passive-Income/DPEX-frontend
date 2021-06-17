@@ -222,6 +222,16 @@ const farms: FarmConfig[] = [
     token: tokens.safemoon,
     quoteToken: tokens.wbnb,
   },
+  {
+    pid: 22,
+    lpSymbol: 'KNIGHT-PSI LP',
+    lpAddresses: {
+      97: '',
+      56: '0xa28ee996c03cb10ad740c50d0f4db03ad5691f5e',
+    },
+    token: tokens.knight,
+    quoteToken: tokens.psi,
+  }
 ]
 
 export default farms
