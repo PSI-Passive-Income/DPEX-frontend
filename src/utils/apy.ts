@@ -24,14 +24,14 @@ export const getPoolApy = (
 /**
  * Get farm APY value in %
  * @param poolWeight allocationPoint / totalAllocationPoint
- * @param quotePriceUsd Income or PSI price in USD
+ * @param incomePriceUsd Income price in USD
  * @param poolLiquidityUsd Total pool liquidity in USD
  * @returns
  */
-export const getFarmApy = (poolWeight: BigNumber | string, quotePriceUsd: BigNumber, poolLiquidityUsd: BigNumber): number => {
+export const getFarmApy = (poolWeight: BigNumber | string, incomePriceUsd: BigNumber, poolLiquidityUsd: BigNumber): number => {
   const finalPoolWeight: BigNumber = typeof(poolWeight) === "string" ? new BigNumber(poolWeight) : poolWeight;
   const yearlyInconmeRewardAllocation = INCOME_PER_BLOCK.times(BLOCKS_PER_YEAR).times(finalPoolWeight).div(10**18)
-  const apy = yearlyInconmeRewardAllocation.times(quotePriceUsd).div(poolLiquidityUsd).times(100)
+  const apy = yearlyInconmeRewardAllocation.times(incomePriceUsd).div(poolLiquidityUsd).times(100)
   return apy.isNaN() || !apy.isFinite() ? null : apy.toNumber()
 }
 
