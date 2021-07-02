@@ -4,6 +4,7 @@ import masterchefABI from 'config/abi/masterchef.json'
 import multicall from 'utils/multicall'
 import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
 import farmsConfig from 'config/constants/farms'
+import tokens from 'config/constants/tokens'
 
 const fetchFarms = async () => {
   const data = await Promise.all(
@@ -45,6 +46,7 @@ const fetchFarms = async () => {
         },
       ]
 
+      if (farmConfig.token === tokens.empire) console.log(calls);
       const [
         tokenBalanceLP,
         quoteTokenBalanceLP,
@@ -61,6 +63,7 @@ const fetchFarms = async () => {
       const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP)
         .div(new BigNumber(10).pow(quoteTokenDecimals))
         .times(new BigNumber(2))
+        .times(lpTokenRatio)
 
       // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
       const tokenAmount = new BigNumber(tokenBalanceLP)

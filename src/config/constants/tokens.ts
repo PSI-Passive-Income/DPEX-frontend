@@ -30,6 +30,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://www.knightsdefi.com/',
   },
+  empire: {
+    symbol: 'EMPIRE',
+    address: {
+      56: '0x293C3Ee9ABaCb08BB8ceD107987F00EfD1539288',
+      97: '',
+    },
+    decimals: 9,
+    projectLink: 'https://empiretoken.world/',
+  },
   cake: {
     symbol: 'CAKE',
     address: {

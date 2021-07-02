@@ -231,7 +231,27 @@ const farms: FarmConfig[] = [
     },
     token: tokens.knight,
     quoteToken: tokens.psi,
-  }
+  },
+  {
+    pid: 23,
+    lpSymbol: 'EMPIRE-INC LP',
+    lpAddresses: {
+      97: '',
+      56: '0xaEB7c9Fc693078181970BFF4b42CaedcD4625ec7',
+    },
+    token: tokens.empire,
+    quoteToken: tokens.inc,
+  },
+  {
+    pid: 24,
+    lpSymbol: 'EMPIRE-BNB LP',
+    lpAddresses: {
+      97: '',
+      56: '0x92a23f0ee03920d1343a25d196c9731b26fb55cd',
+    },
+    token: tokens.empire,
+    quoteToken: tokens.wbnb,
+  },
 ]
 
 export default farms
